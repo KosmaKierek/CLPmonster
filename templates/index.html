@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <title>Strona główna</title>
+    <style>
+    </style>
+  </head>
+  <body>
+    <div>
+      <table>
+          <tr>
+            <th scope="col">Tekst</th>
+            <th scope="col" style="text-align: center">Treść</th>
+            <th scope="col">Synergia</th>
+            <th scope="col">Kategorie</th>
+          </tr>
+          {% for tekst in texts %} 
+          <tr>
+            <td>{{ tekst.filename }}</td>
+            <td>{{ tekst.text|safe }}
+              <br><br><br></td>
+            <td>{{ "{:.2f}".format(tekst.weight) }}
+              <br><br><br></td>
+            <td>
+              {% for category in tekst.categories %}
+                {% if category == 'Sprawca' %}<p style="background-color: rgb(249, 84, 84)" >{{ category }}</p>
+                {% elif category == 'Zdarzenie' %}<p style="background-color: lightgreen" >{{ category }}</p>
+                {% elif category == 'Obiekt' %}<p style="background-color: lightblue" >{{ category }}</p>
+                {% elif category == 'Narzędzie' %}<p style="background-color: orange" >{{ category }}</p>
+                {% elif category == 'Miejsce' %}<p style="background-color: yellow" >{{ category }}</p>
+                {% elif category == 'Cel' %}<p style="background-color: rgb(250, 93, 250)" >{{ category }}</p>
+                {% endif %}
+              {% endfor %}
+            <br><br><br></td>
+          </tr>
+          {% endfor %}
+      </table>
+    </div>
+  </body>
+</html>
