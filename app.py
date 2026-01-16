@@ -5,15 +5,18 @@ import re
 app = Flask(__name__)
 
 tabWag = {
-    'Sprawca': (['król', 'Charles', 'kardynał', 'biskup', 'rodzina', 'królewska', 'następca'], 0.25, 'rgb(249, 84, 84)'),
+    'Sprawca': (['król', 'karol', 'charles', 'kardynał', 'biskup', 'rodzina', 'królewska', 'następca'], 0.25, 'rgb(249, 84, 84)'),
     'Zdarzenie': (['procesja', 'uroczystość', 'przyjęcie', 'msza', 'chrzest', 'celebracja'], 0.05, 'lightgreen'),
     'Obiekt': (['diamenty', 'kryształy', 'szata', 'insygnia', 'karoca'], 0.05, 'lightblue'),
     'Narzędzie': (['korona', 'berło', 'tron', 'kropielnica' ], 0.2, 'orange'),
-    'Miejsce': (['zamek', 'Buckingham', 'kościół', 'klasztor', 'Westminster', 'opactwo'], 0.25, 'yellow'),
+    'Miejsce': (['pałac', 'zamek', 'buckingham', 'kościół', 'klasztor', 'Westminster', 'opactwo'], 0.25, 'yellow'),
     'Cel': (['koronacja', 'następstwo', 'objęcie'], 0.2, 'rgb(250, 93, 250)'),
 }
-znaki = "`!@#$%^&*()_+-=}{[]\|;:'<>?,./~ "
 
+def _words_from_line(line):
+        "Zwraca listę słów dla linijki tekstu unicode."
+        words = re.split('[\W\d]+', line)
+        return [w for w in words if w]
 
 class Text:
     def __init__(self, text, filename):
@@ -25,8 +28,6 @@ class Text:
 class Corpus:
     def __init__(self):
         self.texts = []
-        self.total_categories = 0
-        self.total_weight = 0
 
     def fulltext(self):
         for filename in os.listdir('texts'):
@@ -34,28 +35,24 @@ class Corpus:
                 text = file.read()
                 self.texts.append(Text(text, filename))
 
-#jesli nie usunie najpierw znakow to w liscie beda
-#pod clp do zmiany
     def make_categories(self):
-        for text_object in self.texts:
-            clear_text = text_object.text
-            for znak in znaki:
-                clear_text = clear_text.replace(znak, " ")
-            for word in clear_text.split(" "):
+        for sometext in self.texts:
+            listt=[]
+            listt.extend(_words_from_line(sometext.text))
+            for word in listt:
                 for key, value in tabWag.items():
-                    word_forms = [word.lower()]
-  
-                    for word_form in word_forms:
-                        if word_form in value[0] or word in value[0]:
-                            if key not in text_object.categories:
-                                text_object.categories.append(key)
-                                text_object.weight += value[1]
-                            text_object.text = self.color_text(word, text_object.text, value[2])
-
+                    if word.lower() in value[0]:
+                        if key not in sometext.categories:
+                            sometext.categories.append(key)
+                            sometext.weight += value[1]
+                        sometext.text = self.color_text(word, sometext.text, value[2])
+    
+    
     def color_text(self, word, text, color):
-        for znak in znaki:
-            replacement = f'<span style="background-color: {color}; font-style: italic; font-weight: bold;">{word}</span>{znak}'
-            text = text.replace(word+znak, replacement)
+        end = "`!@#$%^&*()_+-=}{[]\|;:'<>?,./~ "
+        for sign in end:
+            replacement = f'<span style="background-color: {color}; font-style: italic; font-weight: bold;">{word}</span>{sign}'
+            text = text.replace(word+sign, replacement)
         return text
     
     def run(self):

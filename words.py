@@ -12,13 +12,16 @@ def szukaslow(path):
             listt.extend(_words_from_line(line))
     return listt
     
-def _words_from_line(line):
-    "Zwraca listę słów dla linijki tekstu unicode."
-    words = re.split('[\W\d]+', line)
+def counting(words, wrdcnt):
     for word in words:
         if word:
            wrdcnt[word] += 1
-    return [w for w in words if w]
+
+def _words_from_line(line):
+    "Zwraca listę słów dla linijki tekstu unicode."
+    words = re.split('[\W\d]+', line)
+    counting(words, wrdcnt)
+    return [w.lower() for w in words if w]
 
 word_list = []
 for filename in os.listdir("texts"):
