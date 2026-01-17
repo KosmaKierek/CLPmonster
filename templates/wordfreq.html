@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Lista frekwencyjna słów</title>
+    <style>
+    </style>
+  </head>
+  <body>
+    <table>
+        <tr>
+            <th scope="col" style="background-color: #ebaeb9;">Miejsce</th>
+            <th scope="col" style="background-color: #ebaeb9;">Słowo</th>
+            <th scope="col" style="background-color: #FFD1DC;">Ilość wystąpień</th>
+        </tr>
+            {% for row in slowa %}
+            <tr>
+                <td>{{ row[0] }}</td>
+                <td>{{ row[1] }}</td>
+                <td>{{ row[2] }}</td>
+            </tr>
+            {% endfor %}
+    </table>
+  </body>
+</html>

@@ -19,7 +19,7 @@ def counting(words, wrdcnt):
 
 def _words_from_line(line):
     "Zwraca listę słów dla linijki tekstu unicode."
-    words = re.split('[\W\d]+', line)
+    words = re.split('[\W\d]+', line.lower())
     counting(words, wrdcnt)
     return [w.lower() for w in words if w]
 
