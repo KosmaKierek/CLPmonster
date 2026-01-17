@@ -1,24 +1,123 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista frekwencyjna słów</title>
-    <style>
+        <style>
+        body{
+    margin: 0px;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #8bcdf9;
+}
+
+h1{
+    text-align: center;
+    font-family: Georgia, serif;
+}
+
+.topnav {
+  margin-left: 20px;
+  margin-right: 20px;
+  overflow: hidden;
+  background-color: #0e7df3;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.topnav a {
+  float: left;
+  text-align: center;
+  font-size: 17px;
+  color: #f2f2f2;
+  text-decoration: none;
+  padding: 14px 16px;
+}
+
+.topnav a:hover {
+  background-color: #f0eded;
+  color: black;
+}
+
+.topnav a.active {
+  background-color: #010906;
+  color: white;
+}
+
+/* mobile */
+@media screen and (max-width: 600px) {
+  .topnav a, .topnav-right {
+    float: none;
+    display: block;
+  }
+}
+
+.cent{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  margin-left: 20px;
+  margin-right: 20px;
+  padding: 20px;
+  background-color: #2d91e4;
+}
+
+.incent2{
+  display: block;
+  position: relative;
+  font-size: large;
+  font-family: Trebuchet MS, sans-serif;
+  margin: auto;
+  width: 600px; 
+}
+
+th{
+  text-align: center;
+  background-color: #76c1ff;
+  font-family: "Times New Roman", Times, serif;
+}
+td{
+  text-align: center;
+  background-color: #badffd;
+  font-family: "Times New Roman", Times, serif;
+}
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
     </style>
   </head>
   <body>
-    <table>
+    <h1>Ranking słów</h1>
+   <div class="topnav">
+   <a href="/">TEKSTY I SYNERGIA</a>
+   <a href="/categories">KATEGORIE</a>
+   <a href="/frequency" class="active">RANKING SŁÓW</a>
+   </div>
+   <br><br><br><br>
+   <div class="center">
+   <div class="incent2">
+    <table class="cent">
         <tr>
-            <th scope="col" style="background-color: #ebaeb9;">Miejsce</th>
-            <th scope="col" style="background-color: #ebaeb9;">Słowo</th>
-            <th scope="col" style="background-color: #FFD1DC;">Ilość wystąpień</th>
+            <th scope="col">Miejsce</th>
+            <th scope="col">Słowo</th>
+            <th scope="col">Ilość wystąpień</th>
         </tr>
             {% for row in slowa %}
             <tr>
                 <td>{{ row[0] }}</td>
-                <td>{{ row[1] }}</td>
+                <td style="text-align: center">{{ row[1] }}</td>
                 <td>{{ row[2] }}</td>
             </tr>
             {% endfor %}
     </table>
+    </div>
+    </div>
   </body>
 </html>

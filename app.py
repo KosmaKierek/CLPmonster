@@ -1,13 +1,14 @@
 from flask import Flask, render_template
 import os
 import re
+import operator
 
 app = Flask(__name__)
 
 tabWag = {
     'Sprawca': (['król', 'karol', 'charles', 'kardynał', 'biskup', 'rodzina', 'królewska', 'następca'], 0.25, 'rgb(249, 84, 84)'),
     'Zdarzenie': (['procesja', 'uroczystość', 'przyjęcie', 'msza', 'chrzest', 'celebracja'], 0.05, 'lightgreen'),
-    'Obiekt': (['diamenty', 'kryształy', 'szata', 'insygnia', 'karoca'], 0.05, 'lightblue'),
+    'Obiekt': (['diamenty', 'kryształy', 'szata', 'insygnia', 'karoca'], 0.05, 'rgb(132, 116, 237)'),
     'Narzędzie': (['korona', 'berło', 'tron', 'kropielnica' ], 0.2, 'orange'),
     'Miejsce': (['pałac', 'zamek', 'buckingham', 'kościół', 'klasztor', 'Westminster', 'opactwo'], 0.25, 'yellow'),
     'Cel': (['koronacja', 'następstwo', 'objęcie'], 0.2, 'rgb(250, 93, 250)'),
@@ -58,6 +59,7 @@ class Corpus:
     def run(self):
         self.fulltext()
         self.make_categories()
+        self.texts = sorted(self.texts, key=operator.attrgetter('weight'), reverse=True)
 
 txtCorp = Corpus()
 txtCorp.run()

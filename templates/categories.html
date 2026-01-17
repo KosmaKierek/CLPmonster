@@ -1,12 +1,109 @@
 <!DOCTYPE html>
 <html>
   <head>
-       <title>Kategorie</title>
-       <style>
-       </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kategorie</title>
+    <style>
+        body{
+    margin: 0px;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #8bcdf9;
+}
+
+h1{
+    text-align: center;
+    font-family: Georgia, serif;
+}
+
+.topnav {
+  margin-left: 20px;
+  margin-right: 20px;
+  overflow: hidden;
+  background-color: #0e7df3;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.topnav a {
+  float: left;
+  text-align: center;
+  font-size: 17px;
+  color: #f2f2f2;
+  text-decoration: none;
+  padding: 14px 16px;
+}
+
+.topnav a:hover {
+  background-color: #f0eded;
+  color: black;
+}
+
+.topnav a.active {
+  background-color: #010906;
+  color: white;
+}
+
+/* mobile */
+@media screen and (max-width: 600px) {
+  .topnav a, .topnav-right {
+    float: none;
+    display: block;
+  }
+}
+
+.cent{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  margin-left: 20px;
+  margin-right: 20px;
+  padding: 20px;
+  background-color: #2d91e4;
+}
+
+.incent2{
+  display: block;
+  position: relative;
+  font-size: large;
+  font-family: Trebuchet MS, sans-serif;
+  margin: auto;
+  width: 600px; 
+}
+
+th{
+  text-align: center;
+  background-color: #76c1ff;
+  font-family: "Times New Roman", Times, serif;
+}
+td{
+  text-align: center;
+  background-color: #badffd;
+  font-family: "Times New Roman", Times, serif;
+}
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+    </style>
   </head>
   <body>
-        <table>
+   <h1>Kategorie</h1>
+   <div class="topnav">
+   <a href="/">TEKSTY I SYNERGIA</a>
+   <a href="/categories" class="active">KATEGORIE</a>
+   <a href="/frequency">RANKING SŁÓW</a>
+   </div>
+   <br><br><br><br>
+   <div class="center">
+   <div class="incent2"> 
+        <table class="cent">
             <tr>
                 <th scope="col" style="background-color: rgb(249, 84, 84);">Sprawca</th>
                 <td>król, Charles, kardynał, biskup, rodzina, królewska, następca</td>
@@ -18,7 +115,7 @@
                 <td>0.05</td>
             </tr>
             <tr>
-                <th scope="col" style="background-color: lightblue;">Obiekt</th>
+                <th scope="col" style="background-color: rgb(132, 116, 237);">Obiekt</th>
                 <td>diamenty, kryształy, szata, insygnia, karoca</td>
                 <td>0.05</td>
             </tr>
@@ -38,5 +135,6 @@
                 <td>0.2</td>
             </tr>
         </table>
+   </div></div>
   </body>
 </html>
