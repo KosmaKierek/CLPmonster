@@ -6,12 +6,12 @@ import operator
 app = Flask(__name__)
 
 tabWag = {
-    'Sprawca': (['król', 'karol', 'charles', 'kardynał', 'biskup', 'rodzina', 'królewska', 'następca'], 0.25, 'rgb(249, 84, 84)'),
+    'Sprawca': (['kardynał', 'biskup', 'rodzina', 'królewska', 'następca'], 0.25, 'rgb(249, 84, 84)'),
     'Zdarzenie': (['procesja', 'uroczystość', 'przyjęcie', 'msza', 'chrzest', 'celebracja'], 0.05, 'lightgreen'),
-    'Obiekt': (['diamenty', 'kryształy', 'szata', 'insygnia', 'karoca'], 0.05, 'rgb(132, 116, 237)'),
-    'Narzędzie': (['korona', 'berło', 'tron', 'kropielnica' ], 0.2, 'orange'),
-    'Miejsce': (['pałac', 'zamek', 'buckingham', 'kościół', 'klasztor', 'Westminster', 'opactwo'], 0.25, 'yellow'),
-    'Cel': (['koronacja', 'następstwo', 'objęcie'], 0.2, 'rgb(250, 93, 250)'),
+    'Obiekt': (['karol', 'charles', 'iii', 'książę'], 0.05, 'rgb(164, 151, 244)'),
+    'Narzędzie': (['diamenty', 'kryształy', 'szata', 'insygnia', 'karoca', 'korona', 'berło', 'tron', 'kropielnica', 'jabłko'], 0.2, 'orange'),
+    'Miejsce': (['pałac', 'zamek', 'buckingham', 'kościół', 'klasztor', 'westminster', 'opactwo', 'wielka', 'brytania'], 0.25, 'yellow'),
+    'Cel': (['król', 'koronacja', 'następstwo', 'objęcie'], 0.2, 'rgb(250, 93, 250)'),
 }
 
 def _words_from_line(line):
