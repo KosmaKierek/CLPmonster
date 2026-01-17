@@ -34,7 +34,7 @@ txtline = ''
 count = 0
 
 for count, key in enumerate(wrdcnt.most_common(), start=1):
-    txtline += "{} {}\n".format(count, re.sub(r'[^a-zA-Z0-9ąęśżźćóńł_]', ' ', str(key)))
+    txtline += f"{count} {key[0]} {key[1]}\n"
 
 with open("frekwencyjna.csv", "w", encoding="utf8") as text_file:
     text_file.write(txtline)
